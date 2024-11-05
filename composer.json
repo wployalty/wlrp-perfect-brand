@@ -1,0 +1,17 @@
+{
+  "name": "wlrp-perfect-brand/wlrp-perfect-brand",
+  "description": "Compatability to earn via configured brands for Perfect Brands for Woocommerce.",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Sabhari",
+      "email": "sabhari@cartrabbit.in"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Wlrp\\": ""
+    }
+  }
+}
