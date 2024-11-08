@@ -2,6 +2,8 @@
 
 namespace Wlrp\App\Conditions;
 
+defined( 'ABSPATH' ) or die;
+
 use Wlrp\App\Helpers\Woocommerce;
 
 abstract class Base extends \Wlr\App\Conditions\Base {

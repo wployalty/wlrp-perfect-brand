@@ -2,6 +2,8 @@
 
 namespace Wlrp\App\Helpers;
 
+defined( 'ABSPATH' ) or die;
+
 class Input {
 	/**
 	 * List of available input types.

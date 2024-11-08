@@ -1,0 +1,183 @@
+:root {
+    --wp-admin-theme-color: #4F47EB;
+}
+
+#wlrp-main-page {
+    font-family: Helvetica, sans-serif, Arial, sans-serif;
+    margin-right: 15px;
+    background-color: rgba(248, 248, 252, 1);
+    padding: 0 2rem 2rem 2rem;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    outline: none;
+    min-height: 80vh;
+}
+
+.wlrp-cursor {
+    cursor: pointer;
+}
+
+#wlrp-main-page a:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+#wlrp-main-page .wlrp-main-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+#wlrp-main-page .wlrp-main-header h1 {
+    color: rgba(22, 31, 49, 1);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    min-width: max-content;
+}
+
+#wlrp-main-page .wlrp-main-header div {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    color: rgba(122, 129, 143, 1);
+    margin: 0 0.5rem;
+}
+
+.wlrp-admin-main {
+    display: flex;
+    height: 2.5rem;
+    gap: 1.5rem;
+}
+
+.wlrp-admin-main .menu-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    padding: 0 15px;
+    background-color: #4F47EB;
+    color: #FFFFFF;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 12%;
+}
+
+.wlrp-admin-main .back-to-loyalty {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.wlrp-admin-main .back-to-loyalty .wlrp-button-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    padding: 0 15px;
+    background: #fff;
+    border: 1px solid #4F47EB;
+    border-radius: 6px;
+    color: #4F47EB;
+    cursor: pointer;
+}
+
+.wlrp-admin-nav {
+    display: flex;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    align-items: center;
+    gap: 2px;
+    height: 74%;
+}
+
+.wlrp-admin-nav a {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    background-color: rgba(243, 243, 247, 1);
+    padding: 0 1.25rem;
+    color: rgba(83, 88, 99, 1);
+    box-shadow: none;
+    text-decoration: none;
+    border: 1px solid rgba(243, 243, 247, 1);
+    font-size: 1rem;
+    gap: 5px;
+}
+
+.wlrp-admin-nav a:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: #4F47EB;
+    border: 1px solid #E7E7EF;
+    border-bottom-color: rgba(255, 255, 255, 1);
+}
+
+.wlrp-admin-nav .active-nav {
+    background-color: rgba(255, 255, 255, 1);
+    color: #4F47EB;
+    border: 1px solid #E7E7EF;
+    border-bottom-color: rgba(255, 255, 255, 1);
+}
+
+.wlrp-parent {
+    background: #FFFFFF;
+    width: 100%;
+    border-radius: 0 12px 12px 12px;
+    border: 1px solid #dadae7;
+}
+
+.wlrp-parent .wlrp-body-content .wlrp-body-active-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.25rem 2rem;
+}
+
+.wlrp-parent .wlrp-body-content .wlrp-body-active-content:not(.active-content) {
+    display: none;
+}
+
+.wlrp-parent .wlrp-body-content .active-content {
+    display: flex;
+    min-height: 80vh;
+    justify-content: flex-start;
+}
+
+#wlrp-main-page .button-container {
+    text-align: right;
+    margin: 0 0 20px 0;
+    display: inline;
+
+}
+
+#wlrp-main-page select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#wlrp-main-page .button-container button {
+    background-color: #4F47EB;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #4F47EB;
+    font-size: 16px;
+    transition: .5s;
+}
+
+#wlrp-main-page .button-container button:hover {
+    background-color: #fff;
+    color: #4F47EB;
+    border-radius: 5px;
+    border: 1px solid #4F47EB;
+    transition: .5s;
+}

@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: WPLoyalty - Perfect Brand Compatability
+ * Plugin Name: WPLoyalty - Brand Compatability
  * Plugin URI: https://www.wployalty.net
- * Description: Compatability to earn via configured brands for Perfect Brands for Woocommerce.
+ * Description: Compatability to earn via configured brands for Perfect Brands for Woocommerce & Woocommerce Brands.
  * Version: 1.0.0
  * Author: WPLoyalty
- * Slug: wp-loyalty-optin
+ * Slug: wlrp-perfect-brand
  * Text Domain: wlrp-perfect-brand
  * Domain Path: /i18n/languages/
  * Requires at least: 4.9.0
@@ -16,7 +16,7 @@
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * WPLoyalty: 1.2.9
- * WPLoyalty Page Link: wp-loyalty-optin
+ * WPLoyalty Page Link: wlrp-perfect-brand
  */
 defined( 'ABSPATH' ) or die;
 
@@ -31,7 +31,7 @@ if ( ! class_exists( \Wlrp\App\Router::class ) || ! class_exists( \Wlrp\App\Help
 	return;
 }
 //Define the plugin version
-defined( 'WLRP_PLUGIN_NAME' ) or define( 'WLRP_PLUGIN_NAME', 'WPLoyalty - Perfect Brand Compatability' );
+defined( 'WLRP_PLUGIN_NAME' ) or define( 'WLRP_PLUGIN_NAME', 'WPLoyalty - Brand Compatability' );
 defined( 'WLRP_PLUGIN_VERSION' ) or define( 'WLRP_PLUGIN_VERSION', '1.0.0' );
 defined( 'WLRP_MINIMUM_PHP_VERSION' ) or define( 'WLRP_MINIMUM_PHP_VERSION', '7.4' );
 defined( 'WLRP_MINIMUM_WP_VERSION' ) or define( 'WLRP_MINIMUM_WP_VERSION', '4.9' );

@@ -2,14 +2,16 @@
 
 namespace Wlrp\App\Conditions;
 
+defined( 'ABSPATH' ) or die;
+
 use Wlrp\App\Conditions\Base;
 
 class CustomTaxonomy extends Base {
 	function __construct() {
 		parent::__construct();
 		$this->name  = 'brands';
-		$this->label = __( 'Custom Taxonomy', 'wp-loyalty-rules' );
-		$this->group = __( 'Product', 'wp-loyalty-rules' );
+		$this->label = __( 'Custom Taxonomy', 'wlrp-perfect-brand' );
+		$this->group = __( 'Product', 'wlrp-perfect-brand' );
 	}
 
 	public function check( $options, $data ) {
