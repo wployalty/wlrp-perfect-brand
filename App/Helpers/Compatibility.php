@@ -12,77 +12,43 @@ defined( 'ABSPATH' ) or die();
 class Compatibility {
 	public static function check( $allow_exit = false ) {
 		if ( ! self::isPHPCompatible() ) {
-			// Translators: [plugin_name] is the plugin name, [php_version] is the minimum PHP version required.
-			$message = strtr(
-				__( '[plugin_name] requires minimum PHP version [php_version]', 'wlrp-perfect-brand' ),
-				[
-					'[plugin_name]' => WLRP_PLUGIN_NAME,
-					'[php_version]' => WLRP_MINIMUM_PHP_VERSION,
-				]
-			);
+			$message = sprintf( __( '%s requires minimum PHP version %s', WLRP_PLUGIN_SLUG ), WLRP_PLUGIN_NAME,
+				WLRP_MINIMUM_PHP_VERSION );
 			$allow_exit ? die( esc_html( $message ) ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWordPressCompatible() ) {
-			// Translators: [plugin_name] is the plugin name, [wp_version] is the minimum WordPress version required.
-			$message = strtr(
-				__( '[plugin_name] requires minimum WordPress version [wp_version]', 'wlrp-perfect-brand' ),
-				[
-					'[plugin_name]' => WLRP_PLUGIN_NAME,
-					'[wp_version]'  => WLRP_MINIMUM_WP_VERSION,
-				]
-			);
+			$message = sprintf( __( '%s requires minimum WordPress version %s', WLRP_PLUGIN_SLUG ), WLRP_PLUGIN_NAME,
+				WLRP_MINIMUM_WP_VERSION );
 			$allow_exit ? die( esc_html( $message ) ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWooCompatible() ) {
-			// Translators: [plugin_name] is the plugin name, [wc_version] is the minimum WooCommerce version required.
-			$message = strtr(
-				__( '[plugin_name] requires minimum WooCommerce version [wc_version]', 'wlrp-perfect-brand' ),
-				[
-					'[plugin_name]' => WLRP_PLUGIN_NAME,
-					'[wc_version]'  => WLRP_MINIMUM_WC_VERSION,
-				]
-			);
+			$message = sprintf( __( '%s requires minimum Woocommerce version %s', WLRP_PLUGIN_SLUG ),
+				WLRP_PLUGIN_NAME, WLRP_MINIMUM_WC_VERSION );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWPLoyaltyCompatible() ) {
-			// Translators: [plugin_name] is the plugin name, [wlr_version] is the minimum WPLoyalty version required.
-			$message = strtr(
-				__( '[plugin_name] requires minimum WPLoyalty version [wlr_version]', 'wlrp-perfect-brand' ),
-				[
-					'[plugin_name]' => WLRP_PLUGIN_NAME,
-					'[wlr_version]' => WLRP_MINIMUM_WLR_VERSION,
-				]
-			);
+			$message = sprintf( __( '%s requires minimum WPLoyalty version %s', WLRP_PLUGIN_SLUG ), WLRP_PLUGIN_NAME,
+				WLRP_MINIMUM_WLR_VERSION );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWoocommerceActive() ) {
-			// Translators: [plugin_name] is the plugin name that requires WooCommerce to be active.
-			$message = strtr(
-				__( 'WooCommerce should be active in order to use [plugin_name]', 'wlrp-perfect-brand' ),
-				[
-					'[plugin_name]' => WLRP_PLUGIN_NAME,
-				]
-			);
+			$message = sprintf( __( 'Woocommerce should be active in order to use %s', WLRP_PLUGIN_SLUG ),
+				WLRP_PLUGIN_NAME );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWPLoyaltyActive() ) {
-			// Translators: [plugin_name] is the plugin name that requires WPLoyalty to be active.
-			$message = strtr(
-				__( 'WPLoyalty should be active in order to use [plugin_name]', 'wlrp-perfect-brand' ),
-				[
-					'[plugin_name]' => WLRP_PLUGIN_NAME,
-				]
-			);
+			$message = sprintf( __( 'WPLoyalty should be active in order to use %s', WLRP_PLUGIN_SLUG ),
+				WLRP_PLUGIN_NAME );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;

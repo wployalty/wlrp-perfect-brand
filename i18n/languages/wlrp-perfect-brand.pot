@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-08T07:22:51+05:30\n"
+"POT-Creation-Date: 2024-11-09T03:46:20+05:30\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wlrp-perfect-brand\n"
@@ -52,86 +52,62 @@ msgstr ""
 msgid "WPLoyalty: Brands Compatability"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:104
+#: App/Controllers/Admin/Main.php:106
 msgid "Select custom taxonomy"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:106
-#: App/Controllers/Admin/Main.php:125
-#: App/Controllers/Admin/Main.php:143
+#: App/Controllers/Admin/Main.php:108
+#: App/Controllers/Admin/Main.php:127
+#: App/Controllers/Admin/Main.php:145
 msgid "Brands"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:107
+#: App/Controllers/Admin/Main.php:109
 msgid "Taxonomy should be "
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:108
+#: App/Controllers/Admin/Main.php:110
 msgid "Select Custom taxonomy"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:109
+#: App/Controllers/Admin/Main.php:111
 msgid "Taxonomy product in cart"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:110
+#: App/Controllers/Admin/Main.php:112
 msgid "Taxonomy quantity"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:163
+#: App/Controllers/Admin/Main.php:165
 msgid "Invalid method"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:177
+#: App/Controllers/Admin/Main.php:179
 msgid "Method not found"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:230
+#: App/Controllers/Admin/Main.php:232
 msgid "Basic validation failed"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:235
+#: App/Controllers/Admin/Main.php:237
 msgid "Select plugin to enable compatibility!"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:239
+#: App/Controllers/Admin/Main.php:241
 msgid "Please activate the selected plugin!"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:242
+#: App/Controllers/Admin/Main.php:244
 msgid "Settings saved successfully!"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:244
+#: App/Controllers/Admin/Main.php:246
 msgid "Selection matches existing choice!"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:246
+#: App/Controllers/Admin/Main.php:248
 msgid "Something went wrong!"
-msgstr ""
-
-#: App/Helpers/Compatibility.php:17
-msgid "[plugin_name] requires minimum PHP version [php_version]"
-msgstr ""
-
-#: App/Helpers/Compatibility.php:30
-msgid "[plugin_name] requires minimum WordPress version [wp_version]"
-msgstr ""
-
-#: App/Helpers/Compatibility.php:43
-msgid "[plugin_name] requires minimum WooCommerce version [wc_version]"
-msgstr ""
-
-#: App/Helpers/Compatibility.php:56
-msgid "[plugin_name] requires minimum WPLoyalty version [wlr_version]"
-msgstr ""
-
-#: App/Helpers/Compatibility.php:69
-msgid "WooCommerce should be active in order to use [plugin_name]"
-msgstr ""
-
-#: App/Helpers/Compatibility.php:81
-msgid "WPLoyalty should be active in order to use [plugin_name]"
 msgstr ""
 
 #: App/Views/Admin/main.php:22
@@ -162,6 +138,10 @@ msgstr ""
 msgid "Woocommerce Brands"
 msgstr ""
 
-#: App/Views/Admin/main.php:50
+#: App/Views/Admin/main.php:52
+msgid "Back to WPLoyalty"
+msgstr ""
+
+#: App/Views/Admin/main.php:53
 msgid "Save changes"
 msgstr ""

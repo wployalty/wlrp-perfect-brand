@@ -29,7 +29,9 @@ class Main {
 	 * @return void
 	 */
 	public static function addMenuPage() {
-		$params = [];
+		$params = [
+			'app_url' => admin_url( 'admin.php?' . http_build_query( array( 'page' => WLR_PLUGIN_SLUG ) ) ) . '#/apps',
+		];
 		$path   = WLRP_PLUGIN_PATH . 'App/Views/Admin/main.php';
 		$path   = apply_filters( 'wlrp_admin_main_template', $path );
 		Util::renderTemplate( $path, $params, true );

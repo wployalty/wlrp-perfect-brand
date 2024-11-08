@@ -47,7 +47,11 @@ $saved_choice = get_option( 'wlrp_compatability_choice', '' );
 								'wlrp-perfect-brand' ); ?></option>
                     </select>
                     <div class="button-container">
-                        <button type="submit"><?php esc_html_e( 'Save changes', 'wlrp-perfect-brand' ) ?></button>
+                        <a class="wlrp-button" target="_self"
+                           href="<?php echo isset( $app_url ) ? esc_url( $app_url ) : '#'; ?>">
+							<?php esc_html_e( 'Back to WPLoyalty', 'wlrp-perfect-brand' ); ?></a>
+                        <button type="submit" class="wlrp-button"><?php esc_html_e( 'Save changes',
+								'wlrp-perfect-brand' ) ?></button>
                     </div>
                 </form>
             </div>

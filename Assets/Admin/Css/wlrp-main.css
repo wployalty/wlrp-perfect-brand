@@ -26,7 +26,7 @@
 #wlrp-main-page .wlrp-main-header {
     display: flex;
     width: 100%;
-    align-items: center;
+    align-items: baseline;
 }
 
 #wlrp-main-page .wlrp-main-header h1 {
@@ -51,40 +51,6 @@
     display: flex;
     height: 2.5rem;
     gap: 1.5rem;
-}
-
-.wlrp-admin-main .menu-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;
-    padding: 0 15px;
-    background-color: #4F47EB;
-    color: #FFFFFF;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 12%;
-}
-
-.wlrp-admin-main .back-to-loyalty {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-}
-
-.wlrp-admin-main .back-to-loyalty .wlrp-button-action {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;
-    height: 100%;
-    padding: 0 15px;
-    background: #fff;
-    border: 1px solid #4F47EB;
-    border-radius: 6px;
-    color: #4F47EB;
-    cursor: pointer;
 }
 
 .wlrp-admin-nav {
@@ -145,15 +111,16 @@
 
 .wlrp-parent .wlrp-body-content .active-content {
     display: flex;
-    min-height: 80vh;
+    min-height: 50vh;
     justify-content: flex-start;
 }
 
 #wlrp-main-page .button-container {
     text-align: right;
-    margin: 0 0 20px 0;
+    margin: 0 0 0 20px;
     display: inline;
-
+    float: right;
+    gap: 5px;
 }
 
 #wlrp-main-page select {
@@ -163,8 +130,9 @@
     border-radius: 4px;
 }
 
-#wlrp-main-page .button-container button {
+#wlrp-main-page .button-container .wlrp-button {
     background-color: #4F47EB;
+    text-decoration: none;
     color: #fff;
     padding: 10px 20px;
     cursor: pointer;
@@ -174,7 +142,7 @@
     transition: .5s;
 }
 
-#wlrp-main-page .button-container button:hover {
+#wlrp-main-page .button-container .wlrp-button:hover {
     background-color: #fff;
     color: #4F47EB;
     border-radius: 5px;
