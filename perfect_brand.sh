@@ -1,0 +1,62 @@
+#!/bin/bash
+
+echo "WPLoyalty Brand Compatability Pack"
+
+current_dir="$PWD"
+
+composer_run(){
+  # shellcheck disable=SC2164
+  cd "$current_dir"
+  composer install --no-dev
+  composer update --no-dev
+  echo "Compress done"
+  echo "WPLoyalty Brand Compatability Pack done"
+  # shellcheck disable=SC2164
+  cd $current_dir
+}
+update_ini_file(){
+  cd $current_dir
+  wp i18n make-pot . "i18n/languages/wlrp-perfect-brand.pot" --slug="wlrp-perfect-brand" --domain="wlrp-perfect-brand" --include="wlrp-perfect-brand.php",/App/ --headers='{"Last-Translator":"WPloyalty","Language-Team":"WPLoyalty"}' --allow-root
+  cd $current_dir
+  echo "Update ini done"
+}
+copy_folder(){
+  # shellcheck disable=SC2164
+  cd $current_dir
+  cd ..
+  pack_folder=$PWD"/compressed_pack"
+  compress_plugin_folder=$pack_folder/"wlrp-perfect-brand"
+  if [ -d "$pack_folder" ]; then
+    rm -r "$pack_pack_folder"
+  fi
+  mkdir "$pack_folder"
+  mkdir "$compress_plugin_folder"
+  move_dir=("App" "Assets" "i18n" "vendor" "wlrp-perfect-brand.php")
+  # shellcheck disable=SC2068
+  for dir in ${move_dir[@]}; do
+    cp -r "$current_dir/$dir" "$compress_plugin_folder/$dir"
+  done
+  cd "$current_dir"
+}
+
+zip_folder(){
+  cd "$current_dir"
+  cd ..
+  pack_compress_folder=$PWD"/compressed_pack"
+  cd "$pack_compress_folder"
+  pack_name="wlrp-perfect-brand"
+  zip_name="wlrp-perfect-brand"
+  rm "$zip_name".zip
+  zip -r "$zip_name".zip $pack_name -q
+  zip -d "$zip_name".zip __MACOSX/\*
+  zip -d "$zip_name".zip \*/.DS_Store
+}
+echo "Composer Run:"
+composer_run
+echo "Update ini"
+update_ini_file
+echo "Copy Folder:"
+copy_folder
+echo "Zip Folder:"
+zip_folder
+echo "End"
