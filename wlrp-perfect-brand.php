@@ -46,6 +46,10 @@ defined( 'WLRP_PLUGIN_URL' ) or define( 'WLRP_PLUGIN_URL', plugin_dir_url( __FIL
 if ( ! \Wlrp\App\Helpers\Compatibility::check() ) {
 	return;
 }
-
+add_action( 'before_woocommerce_init', function () {
+	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+} );
 
 \Wlrp\App\Router::init();
