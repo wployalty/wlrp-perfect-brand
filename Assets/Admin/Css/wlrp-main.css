@@ -27,6 +27,7 @@
     display: flex;
     width: 100%;
     align-items: baseline;
+    margin: 0.5rem 0;
 }
 
 #wlrp-main-page .wlrp-main-header h1 {
@@ -40,9 +41,7 @@
 #wlrp-main-page .wlrp-main-header div {
     position: relative;
     z-index: 10;
-    display: flex;
     width: 100%;
-    align-items: center;
     color: rgba(122, 129, 143, 1);
     margin: 0 0.5rem;
 }
@@ -77,13 +76,6 @@
     gap: 5px;
 }
 
-.wlrp-admin-nav a:hover {
-    background-color: rgba(255, 255, 255, 1);
-    color: #4F47EB;
-    border: 1px solid #E7E7EF;
-    border-bottom-color: rgba(255, 255, 255, 1);
-}
-
 .wlrp-admin-nav .active-nav {
     background-color: rgba(255, 255, 255, 1);
     color: #4F47EB;
@@ -99,9 +91,6 @@
 }
 
 .wlrp-parent .wlrp-body-content .wlrp-body-active-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding: 1.25rem 2rem;
 }
 
@@ -110,42 +99,43 @@
 }
 
 .wlrp-parent .wlrp-body-content .active-content {
-    display: flex;
     min-height: 50vh;
-    justify-content: flex-start;
 }
 
 #wlrp-main-page .button-container {
-    text-align: right;
-    margin: 0 0 0 20px;
-    display: inline;
-    float: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     gap: 5px;
-}
-
-#wlrp-main-page select {
-    width: 100%;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
 }
 
 #wlrp-main-page .button-container .wlrp-button {
     background-color: #4F47EB;
-    text-decoration: none;
     color: #fff;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
     border: 1px solid #4F47EB;
-    font-size: 16px;
     transition: .5s;
 }
 
-#wlrp-main-page .button-container .wlrp-button:hover {
-    background-color: #fff;
-    color: #4F47EB;
-    border-radius: 5px;
-    border: 1px solid #4F47EB;
-    transition: .5s;
+#wlrp-main-page .button-container a {
+    background-color: #fff !important;
+    text-decoration: none;
+    color: #4F47EB !important;
+}
+
+.wlrp-form-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+.wlrp-form-content select {
+    padding: 6px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 25%;
 }

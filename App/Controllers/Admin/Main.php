@@ -49,23 +49,22 @@ class Main {
 		if ( Input::get( 'page' ) != WLRP_PLUGIN_SLUG ) {
 			return;
 		}
+		$suffix = '';
+		if ( defined( 'SCRIPT_DEBUG' ) ) {
+			$suffix = SCRIPT_DEBUG ? '' : '.min';
+		}
 		remove_all_actions( 'admin_notices' );
 		wp_enqueue_style( WLRP_PLUGIN_SLUG . '-main-style', WLRP_PLUGIN_URL . 'Assets/Admin/Css/wlrp-main.css', [],
 			WLRP_PLUGIN_VERSION . '&t=' . time() );
-		wp_enqueue_style( WLRP_PLUGIN_SLUG . '-wlrt-font', WLRP_PLUGIN_URL . 'Assets/Admin/Css/wlrt-fonts.css', [],
+		wp_enqueue_style( WLRP_PLUGIN_SLUG . '-wlrp-font', WLRP_PLUGIN_URL . 'Assets/Admin/Css/wlrp-fonts.css', [],
 			WLRP_PLUGIN_VERSION . '&t=' . time() );
-		wp_enqueue_style( WLRP_PLUGIN_SLUG . 'wlr-toast', WLRP_PLUGIN_URL . 'Assets/Admin/Css/wlr-toast.css', [],
-			WLRP_PLUGIN_VERSION . '&t=' . time() );
+		wp_enqueue_style( WLRP_PLUGIN_SLUG . '-alertify',
+			WLRP_PLUGIN_URL . 'Assets/Admin/Css/alertify.css', array(), WLRP_PLUGIN_URL );
+		wp_enqueue_script( WLRP_PLUGIN_SLUG . '-alertify', WLRP_PLUGIN_URL . 'Assets/Admin/Js/alertify.js',
+			array(), WLRP_PLUGIN_URL . '&t=' . time() );
 		wp_enqueue_script(
 			WLRP_PLUGIN_SLUG . '-main',
 			WLRP_PLUGIN_URL . 'Assets/Admin/Js/wlrp-main.js',
-			[ 'jquery' ],
-			WLRP_PLUGIN_VERSION,
-			true
-		);
-		wp_enqueue_script(
-			WLRP_PLUGIN_SLUG . '-wlr-toast',
-			WLRP_PLUGIN_URL . 'Assets/Admin/Js/wlr-toast.js',
 			[ 'jquery' ],
 			WLRP_PLUGIN_VERSION,
 			true
