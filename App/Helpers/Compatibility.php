@@ -67,7 +67,7 @@ class Compatibility {
 	}
 
 	/**
-	 * Check WordPress version for compatability.
+	 * Check WordPress version for compatibility.
 	 *
 	 * @return bool
 	 */
@@ -76,7 +76,7 @@ class Compatibility {
 	}
 
 	/**
-	 * Check Woocommerce version for compatability.
+	 * Check Woocommerce version for compatibility.
 	 *
 	 * @return bool
 	 */
@@ -102,7 +102,7 @@ class Compatibility {
 	}
 
 	/**
-	 * Check WPLoyalty version for compatability.
+	 * Check WPLoyalty version for compatibility.
 	 *
 	 * @return bool
 	 */

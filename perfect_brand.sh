@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "WPLoyalty Brand Compatability Pack"
+echo "WPLoyalty Brand compatibility Pack"
 
 current_dir="$PWD"
 
@@ -10,7 +10,7 @@ composer_run(){
   composer install --no-dev
   composer update --no-dev
   echo "Compress done"
-  echo "WPLoyalty Brand Compatability Pack done"
+  echo "WPLoyalty Brand compatibility Pack done"
   # shellcheck disable=SC2164
   cd $current_dir
 }

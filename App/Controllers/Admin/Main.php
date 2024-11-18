@@ -16,10 +16,9 @@ class Main {
 	 * @return void
 	 */
 	public static function addAdminMenu() {
-		if ( \Wlr\App\Helpers\Woocommerce::hasAdminPrivilege() ) {
-			add_menu_page( __( "WPLoyalty: Brands Compatability", 'wlrp-perfect-brand' ),
-				__( "WPLoyalty: Brands Compatability", 'wlrp-perfect-brand' ), "manage_woocommerce", WLRP_PLUGIN_SLUG,
-				"Wlrp\App\Controllers\Admin\Main::addMenuPage", 'dashicons-megaphone', 59 );
+		if ( Woocommerce::hasAdminPrivilege() ) {
+			add_menu_page( __( "WPLoyalty: Brands compatibility", 'wlrp-perfect-brand' ),
+				__( "WPLoyalty: Brands compatibility", 'wlrp-perfect-brand' ), "manage_woocommerce", WLRP_PLUGIN_SLUG,[self::class,'addMenuPage'], 'dashicons-megaphone', 59 );
 		}
 	}
 
@@ -30,7 +29,7 @@ class Main {
 	 */
 	public static function addMenuPage() {
 		$params = [
-			'app_url' => admin_url( 'admin.php?' . http_build_query( array( 'page' => WLR_PLUGIN_SLUG ) ) ) . '#/apps',
+			'app_url' => admin_url( 'admin.php?' . http_build_query( [ 'page' => WLR_PLUGIN_SLUG ] ) ) . '#/apps',
 		];
 		$path   = WLRP_PLUGIN_PATH . 'App/Views/Admin/main.php';
 		$path   = apply_filters( 'wlrp_admin_main_template', $path );
@@ -43,12 +42,10 @@ class Main {
 	 * @return void
 	 */
 	public static function adminAssets() {
-		if ( ! \Wlr\App\Helpers\Woocommerce::hasAdminPrivilege() ) {
+		if ( ! Woocommerce::hasAdminPrivilege() || Input::get( 'page' ) != WLRP_PLUGIN_SLUG ) {
 			return;
 		}
-		if ( Input::get( 'page' ) != WLRP_PLUGIN_SLUG ) {
-			return;
-		}
+
 		$suffix = '';
 		if ( defined( 'SCRIPT_DEBUG' ) ) {
 			$suffix = SCRIPT_DEBUG ? '' : '.min';
@@ -59,9 +56,9 @@ class Main {
 		wp_enqueue_style( WLRP_PLUGIN_SLUG . '-wlrp-font', WLRP_PLUGIN_URL . 'Assets/Admin/Css/wlrp-fonts.css', [],
 			WLRP_PLUGIN_VERSION . '&t=' . time() );
 		wp_enqueue_style( WLRP_PLUGIN_SLUG . '-alertify',
-			WLRP_PLUGIN_URL . 'Assets/Admin/Css/alertify.css', array(), WLRP_PLUGIN_URL );
+			WLRP_PLUGIN_URL . 'Assets/Admin/Css/alertify.css', [], WLRP_PLUGIN_URL );
 		wp_enqueue_script( WLRP_PLUGIN_SLUG . '-alertify', WLRP_PLUGIN_URL . 'Assets/Admin/Js/alertify.js',
-			array(), WLRP_PLUGIN_URL . '&t=' . time() );
+			[], WLRP_PLUGIN_URL . '&t=' . time() );
 		wp_enqueue_script(
 			WLRP_PLUGIN_SLUG . '-main',
 			WLRP_PLUGIN_URL . 'Assets/Admin/Js/wlrp-main.js',
@@ -74,7 +71,7 @@ class Main {
 			'wlrp_localize_data',
 			[
 				'ajax_url'   => admin_url( 'admin-ajax.php' ),
-				'save_nonce' => \Wlr\App\Helpers\Woocommerce::create_nonce( 'wlrp-save-settings-nonce' )
+				'save_nonce' => Woocommerce::createNonce( 'wlrp-save-settings-nonce' )
 			]
 		);
 	}
@@ -102,6 +99,9 @@ class Main {
 	 * @return array
 	 */
 	public static function registerLabels( $json ) {
+        if(empty($json) || !is_array($json)){
+            return $json;
+        }
 		$json['common']['select']['select_custom_taxonomy'] = __( 'Select custom taxonomy', 'wlrp-perfect-brand' );
 		$json['conditions']['brands']                       = [
 			'name'                   => __( 'Brands', 'wlrp-perfect-brand' ),
@@ -122,7 +122,7 @@ class Main {
 	 * @return array
 	 */
 	public static function appendFreeCampaignConditions( $conditions ) {
-		if ( taxonomy_exists( get_option( 'wlrp_compatability_choice' ) ) && Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatability_choice' ) ) ) {
+		if ( !empty($conditions) && is_array($conditions) && taxonomy_exists( get_option( 'wlrp_compatibility_choice' ) ) && Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatibility_choice' ) ) ) {
 			$conditions['point_for_purchase']['Product']['options']['brands'] = __( 'Brands', 'wlrp-perfect-brand' );
 		}
 
@@ -140,7 +140,7 @@ class Main {
 		if ( ! apply_filters( 'wlr_is_pro', false ) ) {
 			return $conditions;
 		}
-		if ( taxonomy_exists( get_option( 'wlrp_compatability_choice' ) ) && Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatability_choice' ) ) ) {
+		if ( !empty($conditions) && is_array($conditions) && taxonomy_exists( get_option( 'wlrp_compatibility_choice' ) ) && Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatibility_choice' ) ) ) {
 			$conditions['subtotal']['Product']['options']['brands'] = __( 'Brands', 'wlrp-perfect-brand' );
 		}
 
@@ -160,23 +160,22 @@ class Main {
 		$method_name = 'ajax' . ucfirst( $method );
 		if ( empty( $method ) || empty( $query ) ) {
 			$data['success'] = false;
-			$data['data']    = array(
+			$data['data']    = [
 				'message' => __( "Invalid method", 'wlrp-perfect-brand' )
-			);
+			];
 
 			return $data;
 		}
-		$woocommerce_helper = new \Wlr\App\Helpers\Woocommerce();
-		$ajax_condition     = AjaxCompatiblityCondition::getInstance();
-		if ( $woocommerce_helper->isMethodExists( $ajax_condition, $method_name ) ) {
 
+		$ajax_condition     = AjaxCompatiblityCondition::getInstance();
+		if ( Woocommerce::isMethodExists( $ajax_condition, $method_name ) ) {
 			$data['success'] = true;
 			$data['data']    = $ajax_condition->$method_name();
 		} else {
 			$data['success'] = false;
-			$data['data']    = array(
-				'message' => __( "Method not found", 'wlrp-perfect-brand' )
-			);
+			$data['data']    = [
+				'message' => __( 'Method not found', 'wlrp-perfect-brand' )
+			];
 		}
 
 		return $data;
@@ -227,49 +226,24 @@ class Main {
 	 */
 	public static function saveSettings() {
 		$wlrp_nonce = Input::get( 'wlrp_nonce', '' );
-		if ( ! \Wlr\App\Helpers\Woocommerce::verify_nonce( $wlrp_nonce, 'wlrp-save-settings-nonce' ) ) {
-			self::sendResponse( false, __( 'Basic validation failed', 'wlrp-perfect-brand' ) );
+		if ( ! Woocommerce::verifyNonce( $wlrp_nonce, 'wlrp-save-settings-nonce' ) ) {
+            wp_send_json_error(['message' => __( 'Basic validation failed', 'wlrp-perfect-brand' )]);
 		}
 		try {
-			$value = sanitize_text_field( Input::get( 'wlrp-compatability-choice' ) );
+			$value = sanitize_text_field( Input::get( 'wlrp-compatibility-choice' ) );
 			if ( empty( $value ) ) {
-				self::sendResponse( false, __( 'Select plugin to enable compatibility!', 'wlrp-perfect-brand' ) );
+				wp_send_json_error(['message' => __( 'Select plugin to enable compatibility!', 'wlrp-perfect-brand' )]);
 			}
 			if ( ! Woocommerce::isParentPluginEnabled( $value ) ) {
-				update_option( 'wlrp_compatability_choice', '' );
-				self::sendResponse( false, __( 'Please activate the selected plugin!', 'wlrp-perfect-brand' ) );
+				update_option( 'wlrp_compatibility_choice', '' );
+				wp_send_json_error(['message' => __( 'Please activate the selected plugin!', 'wlrp-perfect-brand' )]);
 			}
-			if ( update_option( 'wlrp_compatability_choice', $value ) ) {
-				self::sendResponse( true, __( 'Settings saved successfully!', 'wlrp-perfect-brand' ) );
-			} else {
-				self::sendResponse( false, __( 'Selection matches existing choice!', 'wlrp-perfect-brand' ) );
+			if ( update_option( 'wlrp_compatibility_choice', $value ) ) {
+				wp_send_json_success(['message' => __( 'Settings saved successfully!', 'wlrp-perfect-brand' )]);
 			}
-			self::sendResponse( false, __( 'Something went wrong!', 'wlrp-perfect-brand' ) );
+			wp_send_json_error(['message' => __( 'Something went wrong!', 'wlrp-perfect-brand' )]);
 		} catch ( \Exception $e ) {
-			self::sendResponse( false, $e->getMessage() );
+			wp_send_json_error(['message' =>  $e->getMessage()]);
 		}
 	}
-
-	/**
-	 * Method to send JSON response.
-	 *
-	 * @param   string  $success  Success status.
-	 * @param   string  $message  Response message.
-	 *
-	 * @return void
-	 */
-	private static function sendResponse( $success, $message ) {
-		$response = [
-			'success' => $success,
-			'message' => $message
-		];
-
-		if ( $success ) {
-			wp_send_json_success( $response );
-		} else {
-			wp_send_json_error( $response );
-		}
-	}
-
-
 }

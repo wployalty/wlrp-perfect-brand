@@ -8,6 +8,11 @@ use Wlrp\App\Controllers\Admin\Main;
 use Wlrp\App\Helpers\AjaxCompatiblityCondition;
 
 class Router {
+	/**
+	 * Init action and filters.
+	 *
+	 * @return void
+	 */
 	public static function init() {
 		if ( is_admin() ) {
 			add_action( 'admin_menu', [ Main::class, 'addAdminMenu' ], 10 );

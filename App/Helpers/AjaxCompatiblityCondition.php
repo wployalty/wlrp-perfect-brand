@@ -26,7 +26,7 @@ class AjaxCompatiblityCondition extends AjaxProCondition {
 	public function ajaxBrands() {
 		$query = Input::get( 'q', '' );
 		$terms = get_terms( array(
-			'taxonomy'   => Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatability_choice' ) ) ? get_option( 'wlrp_compatability_choice' ) : '',
+			'taxonomy'   => Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatibility_choice' ) ) ? get_option( 'wlrp_compatibility_choice' ) : '',
 			'name__like' => $query,
 			'hide_empty' => false,
 			'number'     => 20

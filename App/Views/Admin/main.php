@@ -5,7 +5,7 @@
  * @link        https://www.wployalty.net
  * */
 defined( "ABSPATH" ) or die();
-$saved_choice = get_option( 'wlrp_compatability_choice', '' );
+$saved_choice = get_option( 'wlrp_compatibility_choice', '' );
 ?>
 <div id="wlrp-main-page">
     <div class="wlrp-main-header">
@@ -40,14 +40,14 @@ $saved_choice = get_option( 'wlrp_compatability_choice', '' );
                         <h3><i class="wlrpf-error">&nbsp;</i><?php esc_html_e( 'IMPORTANT:', 'wlrp-perfect-brand' ); ?>
                         </h3>
                         <ul style="font-style: italic;">
-                            <li style="text-indent: 50px;font-size: 14px;"><?php esc_html_e( 'Brands compatability won\'t work for both plugins at once. It works only for one plugin & the condition should be configured in the campaign.',
+                            <li style="text-indent: 50px;font-size: 14px;"><?php esc_html_e( 'Brands compatibility won\'t work for both plugins at once. It works only for one plugin & the condition should be configured in the campaign.',
 									'wlrp-perfect-brand' ); ?></li>
                         </ul>
                     </div>
                     <div class="wlrp-form-content">
-                        <label for="wlrp-compatability-choice"><?php esc_html_e( 'Choose the plugin:',
+                        <label for="wlrp-compatibility-choice"><?php esc_html_e( 'Choose the plugin:',
 								'wlrp-perfect-brand' ); ?></label>
-                        <select id="wlrp-compatability-choice" name="wlrp-compatability-choice">
+                        <select id="wlrp-compatibility-choice" name="wlrp-compatibility-choice">
                             <option value=""><?php esc_html_e( 'Select plugin',
 									'wlrp-perfect-brand' ); ?></option>
                             <option value="pwb-brand"<?php selected( $saved_choice,
