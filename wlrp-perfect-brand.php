@@ -26,12 +26,9 @@ if ( ! function_exists( 'isWLRActive' ) ) {
 			$active_plugins = array_merge( $active_plugins, get_site_option( 'active_sitewide_plugins', [] ) );
 		}
 
-		return in_array( 'wp-loyalty-rules/wp-loyalty-rules.php', $active_plugins ) || array_key_exists( 'wp-loyalty-rules/wp-loyalty-rules.php', $active_plugins );
+		return in_array( 'wp-loyalty-rules/wp-loyalty-rules.php',
+				$active_plugins ) || array_key_exists( 'wp-loyalty-rules/wp-loyalty-rules.php', $active_plugins );
 	}
-}
-// Check WPLoyalty PRO installed and file loaded
-if ( ! isWLRActive() || !class_exists('\Wlr\App\Premium\Premium') ) {
-	return;
 }
 
 // Autoload the vendor
@@ -67,4 +64,9 @@ add_action( 'before_woocommerce_init', function () {
 	}
 } );
 
-\Wlrp\App\Router::init();
+// Check WPLoyalty PRO installed and file loaded
+add_action( 'plugins_loaded', function () {
+	if ( isWLRActive() && class_exists( '\Wlr\App\Premium\Premium' ) ) {
+		\Wlrp\App\Router::init();
+	}
+}, 10 );
