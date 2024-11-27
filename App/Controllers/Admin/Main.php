@@ -7,6 +7,7 @@ defined( 'ABSPATH' ) or die;
 use Wlrp\App\Helpers\AjaxCompatiblityCondition;
 use Wlrp\App\Helpers\Input;
 use Wlrp\App\Helpers\Util;
+use Wlrp\App\Helpers\Validation;
 use Wlrp\App\Helpers\Woocommerce;
 
 class Main {
@@ -18,7 +19,8 @@ class Main {
 	public static function addAdminMenu() {
 		if ( Woocommerce::hasAdminPrivilege() ) {
 			add_menu_page( __( "WPLoyalty: Brands compatibility", 'wlrp-perfect-brand' ),
-				__( "WPLoyalty: Brands compatibility", 'wlrp-perfect-brand' ), "manage_woocommerce", WLRP_PLUGIN_SLUG,[self::class,'addMenuPage'], 'dashicons-megaphone', 59 );
+				__( "WPLoyalty: Brands compatibility", 'wlrp-perfect-brand' ), "manage_woocommerce", WLRP_PLUGIN_SLUG,
+				[ self::class, 'addMenuPage' ], 'dashicons-megaphone', 59 );
 		}
 	}
 
@@ -99,9 +101,9 @@ class Main {
 	 * @return array
 	 */
 	public static function registerLabels( $json ) {
-        if(empty($json) || !is_array($json)){
-            return $json;
-        }
+		if ( empty( $json ) || ! is_array( $json ) ) {
+			return $json;
+		}
 		$json['common']['select']['select_custom_taxonomy'] = __( 'Select custom taxonomy', 'wlrp-perfect-brand' );
 		$json['conditions']['brands']                       = [
 			'name'                   => __( 'Brands', 'wlrp-perfect-brand' ),
@@ -122,7 +124,7 @@ class Main {
 	 * @return array
 	 */
 	public static function appendFreeCampaignConditions( $conditions ) {
-		if ( !empty($conditions) && is_array($conditions) && taxonomy_exists( get_option( 'wlrp_compatibility_choice' ) ) && Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatibility_choice' ) ) ) {
+		if ( ! empty( $conditions ) && is_array( $conditions ) && taxonomy_exists( get_option( 'wlrp_compatibility_choice' ) ) && Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatibility_choice' ) ) ) {
 			$conditions['point_for_purchase']['Product']['options']['brands'] = __( 'Brands', 'wlrp-perfect-brand' );
 		}
 
@@ -140,7 +142,7 @@ class Main {
 		if ( ! apply_filters( 'wlr_is_pro', false ) ) {
 			return $conditions;
 		}
-		if ( !empty($conditions) && is_array($conditions) && taxonomy_exists( get_option( 'wlrp_compatibility_choice' ) ) && Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatibility_choice' ) ) ) {
+		if ( ! empty( $conditions ) && is_array( $conditions ) && taxonomy_exists( get_option( 'wlrp_compatibility_choice' ) ) && Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatibility_choice' ) ) ) {
 			$conditions['subtotal']['Product']['options']['brands'] = __( 'Brands', 'wlrp-perfect-brand' );
 		}
 
@@ -167,7 +169,7 @@ class Main {
 			return $data;
 		}
 
-		$ajax_condition     = AjaxCompatiblityCondition::getInstance();
+		$ajax_condition = AjaxCompatiblityCondition::getInstance();
 		if ( Woocommerce::isMethodExists( $ajax_condition, $method_name ) ) {
 			$data['success'] = true;
 			$data['data']    = $ajax_condition->$method_name();
@@ -227,23 +229,54 @@ class Main {
 	public static function saveSettings() {
 		$wlrp_nonce = Input::get( 'wlrp_nonce', '' );
 		if ( ! Woocommerce::verifyNonce( $wlrp_nonce, 'wlrp-save-settings-nonce' ) ) {
-            wp_send_json_error(['message' => __( 'Basic validation failed', 'wlrp-perfect-brand' )]);
+			wp_send_json_error( [ 'message' => __( 'Basic validation failed', 'wlrp-perfect-brand' ) ] );
 		}
 		try {
 			$value = sanitize_text_field( Input::get( 'wlrp-compatibility-choice' ) );
 			if ( empty( $value ) ) {
-				wp_send_json_error(['message' => __( 'Select plugin to enable compatibility!', 'wlrp-perfect-brand' )]);
+				wp_send_json_error( [
+					'message' => __( 'Select plugin to enable compatibility!', 'wlrp-perfect-brand' )
+				] );
 			}
 			if ( ! Woocommerce::isParentPluginEnabled( $value ) ) {
 				update_option( 'wlrp_compatibility_choice', '' );
-				wp_send_json_error(['message' => __( 'Please activate the selected plugin!', 'wlrp-perfect-brand' )]);
+				wp_send_json_error( [
+					'message' => __( 'Please activate the selected plugin!', 'wlrp-perfect-brand' )
+				] );
 			}
 			if ( update_option( 'wlrp_compatibility_choice', $value ) ) {
-				wp_send_json_success(['message' => __( 'Settings saved successfully!', 'wlrp-perfect-brand' )]);
+				wp_send_json_success( [ 'message' => __( 'Settings saved successfully!', 'wlrp-perfect-brand' ) ] );
 			}
-			wp_send_json_error(['message' => __( 'Something went wrong!', 'wlrp-perfect-brand' )]);
+			wp_send_json_error( [ 'message' => __( 'Something went wrong!', 'wlrp-perfect-brand' ) ] );
 		} catch ( \Exception $e ) {
-			wp_send_json_error(['message' =>  $e->getMessage()]);
+			wp_send_json_error( [ 'message' => $e->getMessage() ] );
 		}
+	}
+
+	/**
+	 * Method to validate the campaign data.
+	 *
+	 * @param   array  $data  The initial data to be validated.
+	 *
+	 * @return array The validated data with success status and error messages if any.
+	 */
+	public static function validateCampaign( $data ) {
+		$post_data               = $_POST;
+		$post_data['conditions'] = isset( $post_data['conditions'] ) && ! empty( $post_data['conditions'] ) ? json_decode( stripslashes( $post_data['conditions'] ),
+			true ) : [];
+		$validate_data           = Validation::validateBrandsTab( $post_data );
+		if ( ! is_array( $validate_data ) ) {
+			return $data;
+		}
+		foreach ( $validate_data as $key => $validate ) {
+			$validate_data[ $key ] = [ current( $validate ) ];
+		}
+		$data['success'] = false;
+		$data['data']    = [
+			'field_error' => $validate_data,
+			'message'     => __( 'Campaign could not be saved', 'wp-loyalty-rules' )
+		];
+
+		return $data;
 	}
 }

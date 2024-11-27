@@ -65,6 +65,7 @@ class Woocommerce {
 			return false;
 		}
 	}
+
 	/**
 	 * Method to fetch the brands of the products.
 	 *
@@ -74,13 +75,13 @@ class Woocommerce {
 	 */
 	function getProductBrands( $product ) {
 		if ( ! is_object( $product ) ) {
-			return array();
+			return [];
 		}
 		$brand_ids = wp_get_post_terms( $product->get_id(),
 			self::isParentPluginEnabled( get_option( 'wlrp_compatibility_choice' ) ) ? get_option( 'wlrp_compatibility_choice' ) : '',
 			array( 'fields' => 'ids' ) );
 
-		return is_array( $brand_ids ) ? $brand_ids : array();
+		return is_array( $brand_ids ) ? $brand_ids : [];
 	}
 
 	/**
@@ -113,5 +114,33 @@ class Woocommerce {
 
 		return in_array( $selected_plugin_needle,
 				$active_plugins ) || array_key_exists( $selected_plugin_needle, $active_plugins );
+	}
+
+	/**
+	 * Method to get the clean html.
+	 *
+	 * @param   string  $html  The html to clean.
+	 *
+	 * @return string The cleaned html.
+	 * @throws \Exception
+	 */
+	public static function getCleanHtml( $html ) {
+		try {
+			$html         = html_entity_decode( $html );
+			$html         = preg_replace( '/(<(script|style|iframe)\b[^>]*>).*?(<\/\2>)/is', "$1$3", $html );
+			$allowed_html = [
+				'br'     => [],
+				'strong' => [],
+				'span'   => [ 'class' => [] ],
+				'div'    => [ 'class' => [] ],
+				'p'      => [ 'class' => [] ],
+				'b'      => [ 'class' => [] ],
+				'i'      => [ 'class' => [] ],
+			];
+
+			return wp_kses( $html, $allowed_html );
+		} catch ( \Exception $e ) {
+			return '';
+		}
 	}
 }

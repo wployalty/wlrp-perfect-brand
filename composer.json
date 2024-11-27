@@ -9,6 +9,9 @@
       "email": "sabhari@cartrabbit.in"
     }
   ],
+  "require": {
+    "vlucas/valitron": "^1.4.6"
+  },
   "autoload": {
     "psr-4": {
       "Wlrp\\": ""

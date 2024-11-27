@@ -24,6 +24,7 @@ class Router {
 			add_filter( 'wlr_action_conditions', [ Main::class, 'appendFreeCampaignConditions' ], 10, 1 );
 			add_filter( 'wlr_pro_conditions', [ Main::class, 'appendProCampaignConditions' ], 10, 1 );
 			add_action( 'wp_ajax_wlrp_save_settings', [ Main::class, 'saveSettings' ] );
+			add_filter( 'wlr_before_save_campaign_validation', [ Main::class, 'validateCampaign' ] );
 		}
 		add_filter( 'wlr_condition_class_loading', [ Main::class, 'registerConditionData' ], 10, 1 );
 		add_filter( 'wlr_available_conditions', [ Main::class, 'addCondition' ] );
