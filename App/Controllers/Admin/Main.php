@@ -96,7 +96,7 @@ class Main {
 	/**
 	 * Method to add brands to the labels.
 	 *
-	 * @param   array  $json  Labels.
+	 * @param array $json Labels.
 	 *
 	 * @return array
 	 */
@@ -119,7 +119,7 @@ class Main {
 	/**
 	 * Method to add brand condition to free campaigns.
 	 *
-	 * @param   array  $conditions  Conditions.
+	 * @param array $conditions Conditions.
 	 *
 	 * @return array
 	 */
@@ -134,7 +134,7 @@ class Main {
 	/**
 	 * Method to add brand condition to pro campaigns.
 	 *
-	 * @param   array  $conditions  Conditions.
+	 * @param array $conditions Conditions.
 	 *
 	 * @return array
 	 */
@@ -152,7 +152,7 @@ class Main {
 	/**
 	 * Method to initiate function to fetch the condition of search result.
 	 *
-	 * @param   array  $data  Existing data.
+	 * @param array $data Existing data.
 	 *
 	 * @return array
 	 */
@@ -238,16 +238,23 @@ class Main {
 					'message' => __( 'Select plugin to enable compatibility!', 'wlrp-perfect-brand' )
 				] );
 			}
+			$allowed_compatibilities = [
+				'pwb-brand',
+				'product_brand'
+			];
+			if ( ! in_array( $value, $allowed_compatibilities ) ) {
+				wp_send_json_error( [
+					'message' => __( 'Invalid compatibility choice!', 'wlrp-perfect-brand' )
+				] );
+			}
 			if ( ! Woocommerce::isParentPluginEnabled( $value ) ) {
 				update_option( 'wlrp_compatibility_choice', '' );
 				wp_send_json_error( [
 					'message' => __( 'Please activate the selected plugin!', 'wlrp-perfect-brand' )
 				] );
 			}
-			if ( update_option( 'wlrp_compatibility_choice', $value ) ) {
-				wp_send_json_success( [ 'message' => __( 'Settings saved successfully!', 'wlrp-perfect-brand' ) ] );
-			}
-			wp_send_json_error( [ 'message' => __( 'Something went wrong!', 'wlrp-perfect-brand' ) ] );
+			update_option( 'wlrp_compatibility_choice', $value );
+			wp_send_json_success( [ 'message' => __( 'Settings saved successfully!', 'wlrp-perfect-brand' ) ] );
 		} catch ( \Exception $e ) {
 			wp_send_json_error( [ 'message' => $e->getMessage() ] );
 		}
@@ -256,7 +263,7 @@ class Main {
 	/**
 	 * Method to validate the campaign data.
 	 *
-	 * @param   array  $data  The initial data to be validated.
+	 * @param array $data The initial data to be validated.
 	 *
 	 * @return array The validated data with success status and error messages if any.
 	 */

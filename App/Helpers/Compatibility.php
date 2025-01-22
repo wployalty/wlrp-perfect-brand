@@ -12,42 +12,42 @@ defined( 'ABSPATH' ) or die();
 class Compatibility {
 	public static function check( $allow_exit = false ) {
 		if ( ! self::isPHPCompatible() ) {
-			$message = sprintf( __( '%s requires minimum PHP version %s', WLRP_PLUGIN_SLUG ), WLRP_PLUGIN_NAME,
+			$message = sprintf( __( '%s requires minimum PHP version %s', 'wlrp-perfect-brand' ), WLRP_PLUGIN_NAME,
 				WLRP_MINIMUM_PHP_VERSION );
 			$allow_exit ? die( esc_html( $message ) ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWordPressCompatible() ) {
-			$message = sprintf( __( '%s requires minimum WordPress version %s', WLRP_PLUGIN_SLUG ), WLRP_PLUGIN_NAME,
+			$message = sprintf( __( '%s requires minimum WordPress version %s', 'wlrp-perfect-brand' ), WLRP_PLUGIN_NAME,
 				WLRP_MINIMUM_WP_VERSION );
 			$allow_exit ? die( esc_html( $message ) ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWooCompatible() ) {
-			$message = sprintf( __( '%s requires minimum Woocommerce version %s', WLRP_PLUGIN_SLUG ),
+			$message = sprintf( __( '%s requires minimum Woocommerce version %s', 'wlrp-perfect-brand' ),
 				WLRP_PLUGIN_NAME, WLRP_MINIMUM_WC_VERSION );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWPLoyaltyCompatible() ) {
-			$message = sprintf( __( '%s requires minimum WPLoyalty version %s', WLRP_PLUGIN_SLUG ), WLRP_PLUGIN_NAME,
+			$message = sprintf( __( '%s requires minimum WPLoyalty version %s', 'wlrp-perfect-brand' ), WLRP_PLUGIN_NAME,
 				WLRP_MINIMUM_WLR_VERSION );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWoocommerceActive() ) {
-			$message = sprintf( __( 'Woocommerce should be active in order to use %s', WLRP_PLUGIN_SLUG ),
+			$message = sprintf( __( 'Woocommerce should be active in order to use %s', 'wlrp-perfect-brand' ),
 				WLRP_PLUGIN_NAME );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWPLoyaltyActive() ) {
-			$message = sprintf( __( 'WPLoyalty should be active in order to use %s', WLRP_PLUGIN_SLUG ),
+			$message = sprintf( __( 'WPLoyalty should be active in order to use %s', 'wlrp-perfect-brand' ),
 				WLRP_PLUGIN_NAME );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
 
@@ -128,8 +128,8 @@ class Compatibility {
 	/**
 	 * Add admin notice.
 	 *
-	 * @param   string  $message  Message.
-	 * @param   string  $status   Status.
+	 * @param string $message Message.
+	 * @param string $status Status.
 	 *
 	 * @return void
 	 */
