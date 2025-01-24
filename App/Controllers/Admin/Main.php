@@ -93,28 +93,6 @@ class Main {
 		<?php
 	}
 
-	/**
-	 * Method to add brands to the labels.
-	 *
-	 * @param array $json Labels.
-	 *
-	 * @return array
-	 */
-	public static function registerLabels( $json ) {
-		if ( empty( $json ) || ! is_array( $json ) ) {
-			return $json;
-		}
-		$json['common']['select']['select_custom_taxonomy'] = __( 'Select custom taxonomy', 'wlrp-perfect-brand' );
-		$json['conditions']['brands']                       = [
-			'name'                   => __( 'Brands', 'wlrp-perfect-brand' ),
-			'condition'              => __( 'Taxonomy should be ', 'wlrp-perfect-brand' ),
-			'select_custom_taxonomy' => __( 'Select Custom taxonomy', 'wlrp-perfect-brand' ),
-			'value_condition'        => __( 'Taxonomy product in cart', 'wlrp-perfect-brand' ),
-			'value'                  => __( 'Taxonomy quantity', 'wlrp-perfect-brand' ),
-		];
-
-		return $json;
-	}
 
 	/**
 	 * Method to add brand condition to free campaigns.
