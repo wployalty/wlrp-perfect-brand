@@ -102,7 +102,7 @@ class Main {
 	 * @return array
 	 */
 	public static function appendFreeCampaignConditions( $conditions ) {
-		if ( ! empty( $conditions ) && is_array( $conditions ) && taxonomy_exists( get_option( 'wlrp_compatibility_choice' ) ) && Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatibility_choice' ) ) ) {
+		if ( ! empty( $conditions ) && is_array( $conditions ) ) {
 			$conditions['point_for_purchase']['Product']['options']['brands'] = __( 'Brands', 'wlrp-perfect-brand' );
 		}
 
@@ -120,7 +120,7 @@ class Main {
 		if ( ! apply_filters( 'wlr_is_pro', false ) ) {
 			return $conditions;
 		}
-		if ( ! empty( $conditions ) && is_array( $conditions ) && taxonomy_exists( get_option( 'wlrp_compatibility_choice' ) ) && Woocommerce::isParentPluginEnabled( get_option( 'wlrp_compatibility_choice' ) ) ) {
+		if ( ! empty( $conditions ) && is_array( $conditions ) ) {
 			$conditions['subtotal']['Product']['options']['brands'] = __( 'Brands', 'wlrp-perfect-brand' );
 		}
 
