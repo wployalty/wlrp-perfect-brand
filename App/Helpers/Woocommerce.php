@@ -25,7 +25,7 @@ class Woocommerce {
 	 * Creates a nonce for a given action.
 	 * This method generates a cryptographic nonce which can be used to verify the origin of a request for a specific action.
 	 *
-	 * @param   int|string  $action  Optional. The action name. Default is -1.
+	 * @param int|string $action Optional. The action name. Default is -1.
 	 *
 	 * @return string The generated nonce string.
 	 */
@@ -37,8 +37,8 @@ class Woocommerce {
 	 * Checks if a method exists in the given object.
 	 * This method determines whether the specified object has the method with the given name.
 	 *
-	 * @param   object  $object       The object to check for the method.
-	 * @param   string  $method_name  The name of the method to check.
+	 * @param object $object The object to check for the method.
+	 * @param string $method_name The name of the method to check.
 	 *
 	 * @return bool Returns true if the method exists in the object, false otherwise.
 	 */
@@ -53,8 +53,8 @@ class Woocommerce {
 	/**
 	 * Verify the validity of a nonce.
 	 *
-	 * @param   string      $nonce   The nonce value to verify.
-	 * @param   string|int  $action  Optional. The nonce action name. Default is -1.
+	 * @param string $nonce The nonce value to verify.
+	 * @param string|int $action Optional. The nonce action name. Default is -1.
 	 *
 	 * @return bool Whether the nonce is valid or not.
 	 */
@@ -87,7 +87,7 @@ class Woocommerce {
 	/**
 	 * Method to check the active status of selected plugin.
 	 *
-	 * @param   string  $parent_plugin  Selected plugin name.
+	 * @param string $parent_plugin Selected plugin name.
 	 *
 	 * @return bool
 	 */
@@ -99,7 +99,11 @@ class Woocommerce {
 			'pwb-brand'     => 'perfect-woocommerce-brands/perfect-woocommerce-brands.php',
 			'product_brand' => 'woocommerce-brands/woocommerce-brands.php',
 		];
-
+		// Woocommerce brand was added as inbuilt feature in woocommerce 9.6.0
+		$woo_version = Compatibility::getWooVersion();
+		if ( version_compare( $woo_version, '9.6.0', '>=' ) ) {
+			$supported_plugins['product_brand'] = 'woocommerce/woocommerce.php';
+		}
 		if ( ! isset( $supported_plugins[ $parent_plugin ] ) ) {
 			return false;
 		}
@@ -119,7 +123,7 @@ class Woocommerce {
 	/**
 	 * Method to get the clean html.
 	 *
-	 * @param   string  $html  The html to clean.
+	 * @param string $html The html to clean.
 	 *
 	 * @return string The cleaned html.
 	 * @throws \Exception

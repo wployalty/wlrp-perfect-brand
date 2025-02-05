@@ -148,7 +148,7 @@ class Compatibility {
 	 *
 	 * @return string
 	 */
-	protected static function getWooVersion() {
+	public static function getWooVersion() {
 		if ( defined( 'WC_VERSION' ) ) {
 			return WC_VERSION;
 		}
