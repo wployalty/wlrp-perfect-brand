@@ -97,14 +97,14 @@ class Woocommerce {
 		}
 		$supported_plugins = [
 			'pwb-brand'     => 'perfect-woocommerce-brands/perfect-woocommerce-brands.php',
-			'product_brand' => 'woocommerce-brands/woocommerce-brands.php',
+			'product_brand' => 'woocommerce/woocommerce.php',
 		];
+		if ( ! isset( $supported_plugins[ $parent_plugin ] ) ) {
+			return false;
+		}
 		// Woocommerce brand was added as inbuilt feature in woocommerce 9.6.0
 		$woo_version = Compatibility::getWooVersion();
-		if ( version_compare( $woo_version, '9.6.0', '>=' ) ) {
-			$supported_plugins['product_brand'] = 'woocommerce/woocommerce.php';
-		}
-		if ( ! isset( $supported_plugins[ $parent_plugin ] ) ) {
+		if ( $parent_plugin === 'product_brand' && ! version_compare( $woo_version, '9.6.0', '>=' ) ) {
 			return false;
 		}
 
