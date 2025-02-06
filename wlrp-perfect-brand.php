@@ -47,7 +47,7 @@ defined( 'WLRP_PLUGIN_NAME' ) or define( 'WLRP_PLUGIN_NAME', 'WPLoyalty - Brand 
 defined( 'WLRP_PLUGIN_VERSION' ) or define( 'WLRP_PLUGIN_VERSION', '1.0.0' );
 defined( 'WLRP_MINIMUM_PHP_VERSION' ) or define( 'WLRP_MINIMUM_PHP_VERSION', '7.4' );
 defined( 'WLRP_MINIMUM_WP_VERSION' ) or define( 'WLRP_MINIMUM_WP_VERSION', '4.9' );
-defined( 'WLRP_MINIMUM_WC_VERSION' ) or define( 'WLRP_MINIMUM_WC_VERSION', '6.5' );
+defined( 'WLRP_MINIMUM_WC_VERSION' ) or define( 'WLRP_MINIMUM_WC_VERSION', '9.6' );
 defined( 'WLRP_MINIMUM_WLR_VERSION' ) or define( 'WLRP_MINIMUM_WLR_VERSION', '1.2.9' );
 defined( 'WLRP_PLUGIN_SLUG' ) or define( 'WLRP_PLUGIN_SLUG', 'wlrp-perfect-brand' );
 defined( 'WLRP_TEXT_DOMAIN' ) or define( 'WLRP_TEXT_DOMAIN', 'wlrp-perfect-brand' );
