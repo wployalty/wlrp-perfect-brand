@@ -48,10 +48,6 @@ class Main {
 			return;
 		}
 
-		$suffix = '';
-		if ( defined( 'SCRIPT_DEBUG' ) ) {
-			$suffix = SCRIPT_DEBUG ? '' : '.min';
-		}
 		remove_all_actions( 'admin_notices' );
 		wp_enqueue_style( WLRP_PLUGIN_SLUG . '-main-style', WLRP_PLUGIN_URL . 'Assets/Admin/Css/wlrp-main.css', [],
 			WLRP_PLUGIN_VERSION . '&t=' . time() );
