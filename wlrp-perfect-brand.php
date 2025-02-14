@@ -64,6 +64,13 @@ add_action( 'before_woocommerce_init', function () {
 	}
 } );
 
+$myUpdateChecker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+	'https://github.com/wployalty/wlrp-perfect-brand',
+	__FILE__,
+	'wlrp-perfect-brand'
+);
+$myUpdateChecker->getVcsApi()->enableReleaseAssets();
+
 // Check WPLoyalty PRO installed and file loaded
 add_action( 'plugins_loaded', function () {
 	if ( isWLRActive() && class_exists( '\Wlr\App\Premium\Premium' ) ) {
