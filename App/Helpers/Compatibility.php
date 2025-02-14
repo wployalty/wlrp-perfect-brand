@@ -12,34 +12,39 @@ defined( 'ABSPATH' ) or die();
 class Compatibility {
 	public static function check( $allow_exit = false ) {
 		if ( ! self::isPHPCompatible() ) {
-			$message = sprintf( __( '%s requires minimum PHP version %s', 'wlrp-perfect-brand' ), WLRP_PLUGIN_NAME,
+			// translators: First %s will replace plugin name, Second %s replace minimum PHP version
+			$message = sprintf( __( '%1$s requires minimum PHP version %2$s', 'wlrp-perfect-brand' ), WLRP_PLUGIN_NAME,
 				WLRP_MINIMUM_PHP_VERSION );
 			$allow_exit ? die( esc_html( $message ) ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWordPressCompatible() ) {
-			$message = sprintf( __( '%s requires minimum WordPress version %s', 'wlrp-perfect-brand' ), WLRP_PLUGIN_NAME,
+			// translators: First %s will replace plugin name, Second %s replace a minimum WordPress version
+			$message = sprintf( __( '%1$s requires minimum WordPress version %2$s', 'wlrp-perfect-brand' ), WLRP_PLUGIN_NAME,
 				WLRP_MINIMUM_WP_VERSION );
 			$allow_exit ? die( esc_html( $message ) ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWooCompatible() ) {
-			$message = sprintf( __( '%s requires minimum Woocommerce version %s', 'wlrp-perfect-brand' ),
+			// translators: First %s will replace plugin name, Second %s replace minimum WooCommerce version
+			$message = sprintf( __( '%1$s requires minimum Woocommerce version %2$s', 'wlrp-perfect-brand' ),
 				WLRP_PLUGIN_NAME, WLRP_MINIMUM_WC_VERSION );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWPLoyaltyCompatible() ) {
-			$message = sprintf( __( '%s requires minimum WPLoyalty version %s', 'wlrp-perfect-brand' ), WLRP_PLUGIN_NAME,
+			// translators: First %s will replace plugin name, Second %s replace minimum WPLoyalty version
+			$message = sprintf( __( '%1$s requires minimum WPLoyalty version %2$s', 'wlrp-perfect-brand' ), WLRP_PLUGIN_NAME,
 				WLRP_MINIMUM_WLR_VERSION );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
 
 			return false;
 		}
 		if ( ! self::isWoocommerceActive() ) {
+			// translators: %s will replace plugin name
 			$message = sprintf( __( 'Woocommerce should be active in order to use %s', 'wlrp-perfect-brand' ),
 				WLRP_PLUGIN_NAME );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
@@ -47,6 +52,7 @@ class Compatibility {
 			return false;
 		}
 		if ( ! self::isWPLoyaltyActive() ) {
+			// translators: %s will replace plugin name
 			$message = sprintf( __( 'WPLoyalty should be active in order to use %s', 'wlrp-perfect-brand' ),
 				WLRP_PLUGIN_NAME );
 			$allow_exit ? exit( $message ) : self::adminNotice( esc_html( $message ), 'error' );
@@ -171,6 +177,10 @@ class Compatibility {
 		}
 		if ( ! function_exists( 'get_plugins' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+		$plugin_file = 'wp-loyalty-rules/wp-loyalty-rules.php';
+		if ( ! file_exists( WP_PLUGIN_DIR . '/' . $plugin_file ) ) {
+			return '1.0.0';
 		}
 		$plugin_folder = get_plugins( '/wp-loyalty-rules' );
 

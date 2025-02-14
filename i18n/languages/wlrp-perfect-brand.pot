@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-27T15:56:41+05:30\n"
+"POT-Creation-Date: 2025-02-14T16:21:20+05:30\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wlrp-perfect-brand\n"
@@ -52,60 +52,66 @@ msgstr ""
 msgid "WPLoyalty: Brands compatibility"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:106
-#: App/Controllers/Admin/Main.php:124
+#: App/Controllers/Admin/Main.php:102
+#: App/Controllers/Admin/Main.php:120
 msgid "Brands"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:144
+#: App/Controllers/Admin/Main.php:140
 msgid "Invalid method"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:157
+#: App/Controllers/Admin/Main.php:153
 msgid "Method not found"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:210
+#: App/Controllers/Admin/Main.php:206
 msgid "Basic validation failed"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:216
+#: App/Controllers/Admin/Main.php:212
 msgid "Select plugin to enable compatibility!"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:225
+#: App/Controllers/Admin/Main.php:221
 msgid "Invalid compatibility choice!"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:231
+#: App/Controllers/Admin/Main.php:227
 msgid "Please activate the selected plugin!"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:235
+#: App/Controllers/Admin/Main.php:231
 msgid "Settings saved successfully!"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:15
-msgid "%s requires minimum PHP version %s"
+#. translators: First %s will replace plugin name, Second %s replace minimum PHP version
+#: App/Helpers/Compatibility.php:16
+msgid "%1$s requires minimum PHP version %2$s"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:22
-msgid "%s requires minimum WordPress version %s"
+#. translators: First %s will replace plugin name, Second %s replace a minimum WordPress version
+#: App/Helpers/Compatibility.php:24
+msgid "%1$s requires minimum WordPress version %2$s"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:29
-msgid "%s requires minimum Woocommerce version %s"
+#. translators: First %s will replace plugin name, Second %s replace minimum WooCommerce version
+#: App/Helpers/Compatibility.php:32
+msgid "%1$s requires minimum Woocommerce version %2$s"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:36
-msgid "%s requires minimum WPLoyalty version %s"
+#. translators: First %s will replace plugin name, Second %s replace minimum WPLoyalty version
+#: App/Helpers/Compatibility.php:40
+msgid "%1$s requires minimum WPLoyalty version %2$s"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:43
+#. translators: %s will replace plugin name
+#: App/Helpers/Compatibility.php:48
 msgid "Woocommerce should be active in order to use %s"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:50
+#. translators: %s will replace plugin name
+#: App/Helpers/Compatibility.php:56
 msgid "WPLoyalty should be active in order to use %s"
 msgstr ""
 
