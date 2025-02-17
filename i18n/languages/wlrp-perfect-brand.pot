@@ -1,22 +1,22 @@
-# Copyright (C) 2024 WPLoyalty
+# Copyright (C) 2025 WPLoyalty
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPLoyalty - Brand Compatability 1.0.0\n"
+"Project-Id-Version: WPLoyalty - Brand Compatibility 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wlrp-perfect-brand\n"
 "Last-Translator: WPloyalty\n"
 "Language-Team: WPLoyalty\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-08T07:22:51+05:30\n"
+"POT-Creation-Date: 2025-02-14T16:21:20+05:30\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wlrp-perfect-brand\n"
 
 #. Plugin Name of the plugin
 #: wlrp-perfect-brand.php
-msgid "WPLoyalty - Brand Compatability"
+msgid "WPLoyalty - Brand Compatibility"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: wlrp-perfect-brand.php
-msgid "Compatability to earn via configured brands for Perfect Brands for Woocommerce & Woocommerce Brands."
+msgid "Compatibility to earn via configured brands for Perfect Brands for Woocommerce & Woocommerce Brands."
 msgstr ""
 
 #. Author of the plugin
@@ -47,121 +47,164 @@ msgstr ""
 msgid "Product"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:20
 #: App/Controllers/Admin/Main.php:21
-msgid "WPLoyalty: Brands Compatability"
+#: App/Controllers/Admin/Main.php:22
+msgid "WPLoyalty: Brands compatibility"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:104
-msgid "Select custom taxonomy"
-msgstr ""
-
-#: App/Controllers/Admin/Main.php:106
-#: App/Controllers/Admin/Main.php:125
-#: App/Controllers/Admin/Main.php:143
+#: App/Controllers/Admin/Main.php:102
+#: App/Controllers/Admin/Main.php:120
 msgid "Brands"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:107
-msgid "Taxonomy should be "
-msgstr ""
-
-#: App/Controllers/Admin/Main.php:108
-msgid "Select Custom taxonomy"
-msgstr ""
-
-#: App/Controllers/Admin/Main.php:109
-msgid "Taxonomy product in cart"
-msgstr ""
-
-#: App/Controllers/Admin/Main.php:110
-msgid "Taxonomy quantity"
-msgstr ""
-
-#: App/Controllers/Admin/Main.php:163
+#: App/Controllers/Admin/Main.php:140
 msgid "Invalid method"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:177
+#: App/Controllers/Admin/Main.php:153
 msgid "Method not found"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:230
+#: App/Controllers/Admin/Main.php:206
 msgid "Basic validation failed"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:235
+#: App/Controllers/Admin/Main.php:212
 msgid "Select plugin to enable compatibility!"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:239
+#: App/Controllers/Admin/Main.php:221
+msgid "Invalid compatibility choice!"
+msgstr ""
+
+#: App/Controllers/Admin/Main.php:227
 msgid "Please activate the selected plugin!"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:242
+#: App/Controllers/Admin/Main.php:231
 msgid "Settings saved successfully!"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:244
-msgid "Selection matches existing choice!"
+#. translators: First %s will replace plugin name, Second %s replace minimum PHP version
+#: App/Helpers/Compatibility.php:16
+msgid "%1$s requires minimum PHP version %2$s"
 msgstr ""
 
-#: App/Controllers/Admin/Main.php:246
-msgid "Something went wrong!"
+#. translators: First %s will replace plugin name, Second %s replace a minimum WordPress version
+#: App/Helpers/Compatibility.php:24
+msgid "%1$s requires minimum WordPress version %2$s"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:17
-msgid "[plugin_name] requires minimum PHP version [php_version]"
+#. translators: First %s will replace plugin name, Second %s replace minimum WooCommerce version
+#: App/Helpers/Compatibility.php:32
+msgid "%1$s requires minimum Woocommerce version %2$s"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:30
-msgid "[plugin_name] requires minimum WordPress version [wp_version]"
+#. translators: First %s will replace plugin name, Second %s replace minimum WPLoyalty version
+#: App/Helpers/Compatibility.php:40
+msgid "%1$s requires minimum WPLoyalty version %2$s"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:43
-msgid "[plugin_name] requires minimum WooCommerce version [wc_version]"
+#. translators: %s will replace plugin name
+#: App/Helpers/Compatibility.php:48
+msgid "Woocommerce should be active in order to use %s"
 msgstr ""
 
+#. translators: %s will replace plugin name
 #: App/Helpers/Compatibility.php:56
-msgid "[plugin_name] requires minimum WPLoyalty version [wlr_version]"
+msgid "WPLoyalty should be active in order to use %s"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:69
-msgid "WooCommerce should be active in order to use [plugin_name]"
+#: App/Helpers/Validation.php:24
+msgid "This field"
 msgstr ""
 
-#: App/Helpers/Compatibility.php:81
-msgid "WPLoyalty should be active in order to use [plugin_name]"
+#: App/Helpers/Validation.php:33
+#: App/Helpers/Validation.php:37
+msgid "Invalid characters"
+msgstr ""
+
+#: App/Helpers/Validation.php:41
+msgid "validation has failed"
+msgstr ""
+
+#: App/Helpers/Validation.php:45
+msgid "accepts only numbers"
+msgstr ""
+
+#: App/Helpers/Validation.php:49
+msgid "required field"
+msgstr ""
+
+#: App/Helpers/Validation.php:50
+msgid " is empty"
+msgstr ""
+
+#: App/Helpers/Validation.php:54
+msgid "brand is not available"
+msgstr ""
+
+#: App/Helpers/Validation.php:92
+#: App/Helpers/Validation.php:94
+msgid "{field} has invalid characters"
+msgstr ""
+
+#: App/Helpers/Validation.php:97
+msgid "{field} has brand not available in configured brand plugin."
+msgstr ""
+
+#: App/Helpers/Validation.php:100
+msgid "{field} is required"
+msgstr ""
+
+#: App/Helpers/Validation.php:102
+msgid "{field} is empty"
+msgstr ""
+
+#: App/Helpers/Validation.php:106
+msgid "{field} must be greater than 0"
+msgstr ""
+
+#: App/Helpers/Validation.php:110
+msgid "{field} accepts only numbers"
+msgstr ""
+
+#: App/Helpers/Validation.php:116
+msgid "{field} accepts only letters,numbers and underscore"
 msgstr ""
 
 #: App/Views/Admin/main.php:22
 msgid "Settings"
 msgstr ""
 
-#: App/Views/Admin/main.php:29
-msgid "IMPORTANT:"
+#: App/Views/Admin/main.php:33
+msgid "Back to WPLoyalty"
 msgstr ""
 
-#: App/Views/Admin/main.php:31
-msgid "Brands compatability won't work for both plugins at once. It works only for one plugin & the condition should be configured in the campaign."
-msgstr ""
-
-#: App/Views/Admin/main.php:37
-msgid "Choose the plugin:"
+#: App/Views/Admin/main.php:35
+msgid "Save"
 msgstr ""
 
 #: App/Views/Admin/main.php:40
-msgid "Select plugin"
+msgid "IMPORTANT:"
 msgstr ""
 
 #: App/Views/Admin/main.php:43
+msgid "Brands compatibility won't work for both plugins at once. It works only for one plugin & the condition should be configured in the campaign."
+msgstr ""
+
+#: App/Views/Admin/main.php:48
+msgid "Choose the plugin:"
+msgstr ""
+
+#: App/Views/Admin/main.php:51
+msgid "Select plugin"
+msgstr ""
+
+#: App/Views/Admin/main.php:54
 msgid "Perfect Brands for Woocommerce"
 msgstr ""
 
-#: App/Views/Admin/main.php:46
+#: App/Views/Admin/main.php:57
 msgid "Woocommerce Brands"
-msgstr ""
-
-#: App/Views/Admin/main.php:50
-msgid "Save changes"
 msgstr ""

@@ -11,10 +11,15 @@ if (typeof (wlrp_jquery) == "undefined") {
             dataType: 'JSON',
             data: formData + '&action=wlrp_save_settings&wlrp_nonce=' + wlrp_localize_data.save_nonce,
             success: function (response) {
-                (response.success) ? showToast('success', response.data.message) : showToast('invalid', response.data.message);
+                alertify.set('notifier', 'position', 'top-right');
+                if (response.success) {
+                    alertify.success(response.data.message);
+                } else {
+                    alertify.error(response.data.message);
+                }
             },
             error: function (xhr, status, error) {
-                showToast('error', xhr)
+                alertify.error(error);
             }
         });
     });
