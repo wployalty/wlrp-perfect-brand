@@ -161,6 +161,11 @@ class Compatibility {
 		if ( ! function_exists( 'get_plugins' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
+
+        if ( ! file_exists( WP_PLUGIN_DIR . '/woocommerce/woocommerce.php' ) ) {
+			return '1.0.0';
+		}
+
 		$plugin_folder = get_plugins( '/woocommerce' );
 
 		return isset( $plugin_folder['woocommerce.php']['Version'] ) ? $plugin_folder['woocommerce.php']['Version'] : '1.0.0';

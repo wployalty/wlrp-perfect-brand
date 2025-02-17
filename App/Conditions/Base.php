@@ -19,7 +19,7 @@ abstract class Base extends \Wlr\App\Conditions\Base {
 	 *
 	 * @return bool
 	 */
-	function match( $product, $type, $method, $values, $cart_item = array() ) {
+	function match( $product, $type, $method, $values, $cart_item = [] ) {
 		if ( is_a( $product, 'WC_Product' ) ) {
 			$method = ! empty( $method ) ? $method : 'in_list';
 			if ( 'brands' === $type ) {

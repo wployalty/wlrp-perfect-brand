@@ -10,16 +10,16 @@ $saved_choice = get_option( 'wlrp_compatibility_choice', '' );
 <div id="wlrp-main-page">
     <div class="wlrp-main-header">
         <h1><?php echo esc_html( WLRP_PLUGIN_NAME ); ?></h1>
-        <div><b><?php echo esc_html( "v" . WLRP_PLUGIN_VERSION ); ?></b></div>
+        <div><b><?php echo esc_html( 'v' . WLRP_PLUGIN_VERSION ); ?></b></div>
     </div>
     <div class="wlrp-admin-main">
         <div class="wlrp-admin-nav">
             <a class="active-nav"
-               href="<?php echo esc_url( admin_url( "admin.php?" . http_build_query( array(
-					   "page" => WLRP_PLUGIN_SLUG,
-					   "view" => 'settings'
-				   ) ) ) ) ?>"
-            ><?php esc_html_e( "Settings", "wlrp-perfect-brand" ); ?></a>
+               href="<?php echo esc_url( admin_url( 'admin.php?' . http_build_query( [
+					   'page' => WLRP_PLUGIN_SLUG,
+					   'view' => 'settings'
+				   ] ) ) ) ?>"
+            ><?php esc_html_e( 'Settings', 'wlrp-perfect-brand' ); ?></a>
         </div>
     </div>
     <div class="wlrp-parent">
@@ -28,7 +28,7 @@ $saved_choice = get_option( 'wlrp_compatibility_choice', '' );
                 <form id="wlrp-save-settings">
                     <div class="button-container">
                         <a class="wlrp-button" target="_self"
-                           href="<?php echo isset( $app_url ) ? esc_url( $app_url ) : '#'; ?>"><i
+                           href="<?php echo esc_url((isset( $app_url ) ?  $app_url  : '#')); ?>"><i
                                     class="wlrpf-back">&nbsp;</i>
 							<?php esc_html_e( 'Back to WPLoyalty', 'wlrp-perfect-brand' ); ?></a>
                         <button type="submit" class="wlrp-button"><i
@@ -50,10 +50,10 @@ $saved_choice = get_option( 'wlrp_compatibility_choice', '' );
                         <select id="wlrp-compatibility-choice" name="wlrp-compatibility-choice">
                             <option value=""><?php esc_html_e( 'Select plugin',
 									'wlrp-perfect-brand' ); ?></option>
-                            <option value="pwb-brand"<?php selected( $saved_choice,
+                            <option value="pwb-brand" <?php selected( $saved_choice,
 								'pwb-brand' ); ?>><?php esc_html_e( 'Perfect Brands for Woocommerce',
 									'wlrp-perfect-brand' ); ?></option>
-                            <option value="product_brand"<?php selected( $saved_choice,
+                            <option value="product_brand" <?php selected( $saved_choice,
 								'product_brand' ); ?>><?php esc_html_e( 'Woocommerce Brands',
 									'wlrp-perfect-brand' ); ?></option>
                         </select>

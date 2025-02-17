@@ -18,8 +18,8 @@ class Main {
 	 */
 	public static function addAdminMenu() {
 		if ( Woocommerce::hasAdminPrivilege() ) {
-			add_menu_page( __( "WPLoyalty: Brands compatibility", 'wlrp-perfect-brand' ),
-				__( "WPLoyalty: Brands compatibility", 'wlrp-perfect-brand' ), "manage_woocommerce", WLRP_PLUGIN_SLUG,
+			add_menu_page( __( "WPLoyalty: Brands Compatibility", 'wlrp-perfect-brand' ),
+				__( "WPLoyalty: Brands Compatibility", 'wlrp-perfect-brand' ), "manage_woocommerce", WLRP_PLUGIN_SLUG,
 				[ self::class, 'addMenuPage' ], 'dashicons-megaphone', 59 );
 		}
 	}
