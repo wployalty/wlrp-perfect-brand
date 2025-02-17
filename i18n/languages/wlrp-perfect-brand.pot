@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-14T16:21:20+05:30\n"
+"POT-Creation-Date: 2025-02-17T06:06:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: wlrp-perfect-brand\n"
 
 #. Plugin Name of the plugin
@@ -49,7 +49,7 @@ msgstr ""
 
 #: App/Controllers/Admin/Main.php:21
 #: App/Controllers/Admin/Main.php:22
-msgid "WPLoyalty: Brands compatibility"
+msgid "WPLoyalty: Brands Compatibility"
 msgstr ""
 
 #: App/Controllers/Admin/Main.php:102
