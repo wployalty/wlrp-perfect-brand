@@ -31,7 +31,7 @@ copy_folder(){
   pack_folder=$PWD"/compressed_pack"
   compress_plugin_folder=$pack_folder/"wlrp-perfect-brand"
   if [ -d "$pack_folder" ]; then
-    rm -r "$pack_pack_folder"
+    rm -r "$pack_folder"
   fi
   mkdir "$pack_folder"
   mkdir "$compress_plugin_folder"
