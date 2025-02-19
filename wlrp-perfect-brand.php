@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WPLoyalty - Brand Compatibility
+ * Plugin Name: WPLoyalty - Brand Condition
  * Plugin URI: https://www.wployalty.net
  * Description: Compatibility to earn via configured brands for Perfect Brands for Woocommerce & Woocommerce Brands.
  * Version: 1.0.0
@@ -49,7 +49,7 @@ if ( ! class_exists( \Wlrp\App\Router::class ) || ! class_exists( \Wlrp\App\Help
 }
 
 //Define the plugin version
-defined( 'WLRP_PLUGIN_NAME' ) or define( 'WLRP_PLUGIN_NAME', 'WPLoyalty - Brand Compatibility' );
+defined( 'WLRP_PLUGIN_NAME' ) or define( 'WLRP_PLUGIN_NAME', 'WPLoyalty - Brand Condition' );
 defined( 'WLRP_PLUGIN_VERSION' ) or define( 'WLRP_PLUGIN_VERSION', '1.0.0' );
 defined( 'WLRP_MINIMUM_PHP_VERSION' ) or define( 'WLRP_MINIMUM_PHP_VERSION', '7.4' );
 defined( 'WLRP_MINIMUM_WP_VERSION' ) or define( 'WLRP_MINIMUM_WP_VERSION', '4.9' );
